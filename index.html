@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f5ef" />
+    <meta name="description" content="A thoughtful little five-letter word game." />
+    <title>Five Letter Club</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="." aria-label="Five Letter Club home">
+          <span class="brand-mark" aria-hidden="true"><span>F</span><span>I</span><span>V</span></span>
+          <span class="brand-name">five letter <em>club</em></span>
+        </a>
+        <nav class="top-actions" aria-label="Game actions">
+          <button class="icon-button" id="help-button" type="button" aria-label="How to play" title="How to play">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.7 9a2.4 2.4 0 1 1 4.2 1.6c-1.1 1.1-1.9 1.5-1.9 3"/><path d="M12 17h.01"/></svg>
+          </button>
+          <button class="icon-button" id="stats-button" type="button" aria-label="Statistics" title="Statistics">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h17"/><path d="M8 15v-4M12 15V7M16 15V9M20 15V4"/></svg>
+          </button>
+          <span class="nav-divider" aria-hidden="true"></span>
+          <button class="new-game-button" id="new-game-button" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5"/><path d="M19 12a7 7 0 1 1-2-4.9L20 12"/></svg>
+            <span>New game</span>
+          </button>
+        </nav>
+      </header>
+
+      <main>
+        <section class="game-intro" aria-labelledby="game-title">
+          <p class="eyebrow"><span class="live-dot"></span> A little word for your day</p>
+          <h1 id="game-title">Take your <i>best</i> guess.</h1>
+          <p class="subtitle">Six tries. Five letters. How's your word sense?</p>
+        </section>
+        <section class="game-area" aria-label="Word puzzle">
+          <div class="board" id="game-board" role="grid" aria-label="Guess board, six rows of five letters"></div>
+          <div class="keyboard" id="keyboard" aria-label="On-screen keyboard"></div>
+          <p class="keyboard-hint">Press <kbd>enter</kbd> to guess <span aria-hidden="true">·</span> <kbd>esc</kbd> to dismiss</p>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Made for the love of five-letter words.</span>
+        <span class="footer-date" id="puzzle-date"></span>
+      </footer>
+    </div>
+    <div class="toast-region" id="toast-region" role="status" aria-live="polite"></div>
+
+    <dialog class="modal" id="help-modal" aria-labelledby="help-title">
+      <form method="dialog"><button class="modal-close" aria-label="Close">&times;</button></form>
+      <p class="eyebrow">The little rulebook</p>
+      <h2 id="help-title">How to play</h2>
+      <p>Find the five-letter word in six tries. After each guess, the tiles give you a nudge.</p>
+      <div class="example-row"><span class="example-tile correct">A</span><span class="example-copy"><strong>Green</strong> means the letter is right and right where it belongs.</span></div>
+      <div class="example-row"><span class="example-tile present">R</span><span class="example-copy"><strong>Gold</strong> means the letter is in the word, just not there.</span></div>
+      <div class="example-row"><span class="example-tile absent">T</span><span class="example-copy"><strong>Gray</strong> means the letter isn't in the word.</span></div>
+      <p class="modal-footnote">A new word each day. Your progress stays on this device.</p>
+    </dialog>
+    <dialog class="modal stats-modal" id="stats-modal" aria-labelledby="stats-title">
+      <form method="dialog"><button class="modal-close" aria-label="Close">&times;</button></form>
+      <p class="eyebrow">Your word history</p>
+      <h2 id="stats-title">Statistics</h2>
+      <div class="stats-grid">
+        <div><strong id="games-played">0</strong><span>Played</span></div>
+        <div><strong id="win-rate">0%</strong><span>Win rate</span></div>
+        <div><strong id="current-streak">0</strong><span>Current streak</span></div>
+        <div><strong id="best-streak">0</strong><span>Best streak</span></div>
+      </div>
+      <h3>Guess distribution</h3>
+      <div class="distribution" id="guess-distribution"></div>
+    </dialog>
+  </body>
+</html>
